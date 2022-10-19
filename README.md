@@ -6,7 +6,9 @@
 - axios
 - react-router-dom
 - stripe 
-- 
+
+# can be used as a boiler plate for a ecommerce site
+
 # install
 - npm i
 
