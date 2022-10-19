@@ -9,7 +9,7 @@ import CartProduct from '../components/CartProduct';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { useEffect } from 'react';
-import { calculateTax, clearCart } from '../features/cart/cartSlice';
+import { calculateQuantity, calculateTax, calculateTotal, clearCart } from '../features/cart/cartSlice';
 
 
 const CartPage = () => {
@@ -18,6 +18,8 @@ const CartPage = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
+        dispatch(calculateQuantity());
+        // dispatch(calculateTotal());
         dispatch(calculateTax());
     },[cartItems])
     return (  
@@ -26,6 +28,7 @@ const CartPage = () => {
             ?
             <>
                 <Container >
+                    <Link to='/products'>Back to Products</Link>
                     <Row>
                         <Col lg='8'>
                         {cartItems.map((product) => {

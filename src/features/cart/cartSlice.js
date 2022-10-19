@@ -27,6 +27,17 @@ const cartSlice = createSlice({
             state.total = state.cartItems.reduce((ack,item) => ack + item.price,0);
               
         },
+        removeFromCart: (state,action) => {
+            const {product} = action.payload;
+            const itemIsThere = state.cartItems.find(item => item.id === product.id)
+
+            if(!!itemIsThere) {
+                state.cartItems = state.cartItems.filter(item => item.id !== product.id)
+            }
+            state.total = state.cartItems.reduce((ack,item) => ack + item.price,0);
+
+
+        },
         calculateTax: (state) => {
             state.tax = Number((state.total * .15).toFixed(2)); 
         },
@@ -42,5 +53,5 @@ const cartSlice = createSlice({
     }
 });
 
-export const {addToCart, calculateTax, calculateTotal, clearCart, calculateQuantity} = cartSlice.actions;
+export const {addToCart, calculateTax, calculateTotal, clearCart, calculateQuantity, removeFromCart} = cartSlice.actions;
 export default cartSlice.reducer;
