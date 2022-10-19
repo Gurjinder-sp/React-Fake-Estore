@@ -6,12 +6,12 @@ export const loginUser = createAsyncThunk(
     'login/userLogin', async (data, thunkAPI) => {
         try {
             thunkAPI.dispatch(showModal())
-            console.log(data)
+            // console.log(data)
             const response = await API.post('/auth/login',{username:data.user,password:data.pwd});
-            console.log(response);
+            // console.log(response);
             return response;
         } catch (error) {
-            console.log(error)
+            // console.log(error)
         } finally {
             thunkAPI.dispatch(closeModal())
         }
@@ -32,7 +32,7 @@ const loginSlice = createSlice({
     initialState,
     reducers: {
         login: (state, action) => {
-            console.log(action.payload);
+            // console.log(action.payload);
             state.name = action.payload;
 
         },
@@ -48,7 +48,7 @@ const loginSlice = createSlice({
             state.isLoading = false;
         },
         [loginUser.fulfilled]: (state, action) => {
-            console.log(action.payload.data.token)
+            // console.log(action.payload.data.token)
             state.token = action.payload.data.token;
             state.loggedIn = true;
 

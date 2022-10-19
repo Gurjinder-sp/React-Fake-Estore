@@ -11,7 +11,6 @@ const Login = () => {
     const {userName, passWord} = useSelector(store => store.login);
 
     const handleSubmit = (e) => {
-        console.log(e)
         e.preventDefault();
         dispatch((login(name)))
         dispatch(loginUser({user: userName,pwd:passWord}));
@@ -19,7 +18,7 @@ const Login = () => {
     return (  
         <Form className='shadow-sm p-5 bg-light w-50' onSubmit={(e) => handleSubmit(e)}>
             <h1 className='mt-0'>Login</h1>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Group className="mb-3" controlId="formBasicName">
                 <Form.Label>Your name</Form.Label>
                 <Form.Control type="text" placeholder="Enter your name" onChange={(evt) => {
                     if(evt.target.value.length > 3) {
@@ -30,7 +29,7 @@ const Login = () => {
                     }
                     }} />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Group className="mb-3" controlId="formBasicUsername">
                 <Form.Label>Username</Form.Label>
                 <Form.Control type="text" placeholder="Enter username" value={userName} disabled />
                 <Form.Text className="text-muted">

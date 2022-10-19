@@ -11,11 +11,11 @@ import { useDispatch } from 'react-redux';
 
 const ProductCard = ({product}) => {
     const dispatch = useDispatch();
-    console.log(product)
+    // console.log(product)
     return (
-    <Card  className="p-2 m-2 shadow-sm " style={{'min-height':'45vh'}}>
+    <Card  className="p-2 m-2 shadow-sm " style={{minHeight:'45vh'}}>
         <Card.Subtitle className='text-end'><TagIcon />{product.category}</Card.Subtitle>
-      <Card.Img variant="top" className="w-50 mx-auto" style={{'max-height':'18vh','object-fit':'contain'}} src={product.image} />
+      <Card.Img variant="top" className="w-50 mx-auto" style={{maxHeight:'18vh',objectFit:'contain'}} src={product.image} />
       <Card.Body>
         <Card.Title>{product.title}</Card.Title>
         <Row>

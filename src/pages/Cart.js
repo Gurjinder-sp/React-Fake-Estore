@@ -4,22 +4,24 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useSelector, useDispatch } from 'react-redux';
 import { EmptyCartIcon } from '../icons';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import CartProduct from '../components/CartProduct';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { useEffect } from 'react';
 import { calculateTax, clearCart } from '../features/cart/cartSlice';
 
+
 const CartPage = () => {
     const {cartItems, total, tax} = useSelector(store => store.cart);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     useEffect(() => {
         dispatch(calculateTax());
     },[cartItems])
     return (  
-        <Container style={{'max-height':'90vh','overflow':'auto'}}>
+        <Container style={{'maxHeight':'90vh','overflow':'auto'}}>
             {!!cartItems.length 
             ?
             <>
@@ -27,12 +29,12 @@ const CartPage = () => {
                     <Row>
                         <Col lg='8'>
                         {cartItems.map((product) => {
-                        return <CartProduct product={product}/>
+                        return <CartProduct key={product.id} product={product}/>
                          })}
                         
                         </Col>
                         <Col lg='4'>
-                            <Card body className='my-2 text-start' style={{'min-height':'85vh'}}>
+                            <Card body className='my-2 text-start' style={{'minHeight':'85vh'}}>
                                 <p className='fs-1'>Cart</p>
                                 <Row>
                                     <Col className='fs-4'>
@@ -65,7 +67,7 @@ const CartPage = () => {
                                        <Button variant='danger' onClick={() => dispatch(clearCart())}>Clear Cart</Button>
                                     </Col>
                                     <Col>
-                                         <Button variant='success'>Proceed to payment</Button>
+                                         <Button variant='success' onClick={() => navigate('/payment')}>Proceed to payment</Button>
                                     </Col>
                                 </Row>
                             </Card>

@@ -5,10 +5,10 @@ export const getAllProducts = createAsyncThunk(
     'products/getAllProducts', async () => {
         try {
             const response = await API.get('/products');
-            console.log(response);
+            // console.log(response);
             return response.data;
         } catch (error) {
-            console.log(error);
+            // console.log(error);
         }
     }
 )
@@ -23,7 +23,7 @@ const productSlice = createSlice({
     initialState,
     reducers: {
         filterProducts: (state, action) => {
-            console.log(action.payload);
+            // console.log(action.payload);
             state.products = state.originalList;
             if(action.payload === 'all') return;
             let d = state.products.filter((prod) => prod.category === action.payload);
@@ -36,7 +36,7 @@ const productSlice = createSlice({
             state.isLoading = true;
         },
         [getAllProducts.fulfilled] : (state, action) => {
-            console.log(action.payload)
+            // console.log(action.payload)
             state.isLoading = false;
             state.products = action.payload;
             state.originalList = action.payload;

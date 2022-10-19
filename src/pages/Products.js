@@ -11,12 +11,12 @@ const Products = () => {
     const dispatch = useDispatch();
     const {products} = useSelector(store => store.products);
 
-    console.log(products)  
+    // console.log(products)  
     useEffect(() => {
         dispatch(getAllProducts())
     },[])
     return ( 
-        <Container style={{'max-height':'90vh','overflow':'auto'}}>
+        <Container style={{'maxHeight':'90vh','overflow':'auto'}}>
             <Row className='text-start my-2'>
                 <FilterProducts />
             </Row>
