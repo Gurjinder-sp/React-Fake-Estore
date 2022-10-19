@@ -9,7 +9,7 @@ const CartProduct = ({product}) => {
     const dispatch = useDispatch();
 
     return ( 
-        <Card body style={{'height':'32vh'}} className='my-2'>
+        <Card body  className='my-2'>
             <Row>
                 <Col lg='3'>
                     <img src={product.image} height='100vh' alt="" />
