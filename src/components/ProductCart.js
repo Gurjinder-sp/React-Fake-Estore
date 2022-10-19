@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import Accordion from 'react-bootstrap/Accordion';
 import { addToCart } from '../features/cart/cartSlice';
 import { useDispatch } from 'react-redux';
+import { showToast } from '../features/Toast/toastSlice';
 
 
 
@@ -31,7 +32,11 @@ const ProductCard = ({product}) => {
         {/* <Row style={{'max-height':'10vh','overflow':'auto'}}>
             {product.description}
         </Row> */}
-    <Button variant='dark' className='my-2' onClick={() => dispatch(addToCart({product}))}>Add to Cart</Button>
+    <Button variant='dark' className='my-2' onClick={() => {
+      dispatch(addToCart({product}));
+      dispatch(showToast('Added'));
+  
+      }}>Add to Cart</Button>
 
         {/* <Accordion flush>
       <Accordion.Item eventKey="0">

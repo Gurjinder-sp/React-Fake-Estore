@@ -12,6 +12,7 @@ import Loader from './components/Loader';
 import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
 import OrderSuccess from './pages/Success';
+import ToastComp from './components/Toast';
 
 const stripePromise = loadStripe('pk_test_51HrjYlDnGuaAT4tp4jnsjOOhF5cdymLyuNGPf0aqYeHmSVNqdysYv6p7Gr78NhmpTOuKq0iQR7imRbTcVGai5Dzp00VIqizmJE');
 function App() {
@@ -43,6 +44,7 @@ function App() {
   },[loggedIn])
   return (
     <div className="App">
+          <ToastComp />
           <Loader />
           <NavbarComp />
           <Routes>

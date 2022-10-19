@@ -2,20 +2,26 @@
 import {useStripe, useElements, PaymentElement} from '@stripe/react-stripe-js';
 import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
+import { useDispatch } from 'react-redux';
+import { closeModal, showModal } from '../features/modalSlice';
+import { showToast } from '../features/Toast/toastSlice';
 const CheckoutForm = () => {
     const stripe = useStripe();
     const elements = useElements();
+    const dispatch = useDispatch();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        
+        dispatch(showModal());
         if(!stripe || !elements) {
             // Stripe.js has not yet loaded
             // Make sure to disable for submission until stripe.js has loaded
             
             return;
         }
-
+        setInterval(() => {
+            dispatch(showToast('Payment Confirmed'))
+        }, 1000);
         const result = await stripe.confirmPayment({
             elements,
             confirmParams: {
@@ -23,11 +29,13 @@ const CheckoutForm = () => {
             }
         });
 
-        console.log(result)
+        console.log(result);
 
         if(result.error) {
             console.log(result.error.message);
         } else {
+            console.log(result)
+            dispatch(closeModal());
             // Your customer will be redirected to your `return url`. For some payments, there may be an intermediate site first to authorize payment, then redirection.
         }
     }

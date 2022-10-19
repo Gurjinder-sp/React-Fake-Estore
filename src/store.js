@@ -3,6 +3,7 @@ import loginSlice from "./features/login/loginSlice";
 import productSlice from "./features/products/productSlice";
 import modalSlice from "./features/modalSlice";
 import cartSlice from "./features/cart/cartSlice";
+import toastSlice from "./features/Toast/toastSlice";
 
 
 export const store = configureStore({
@@ -10,6 +11,7 @@ export const store = configureStore({
         login: loginSlice,
         products: productSlice,
         modal: modalSlice,
-        cart: cartSlice
+        cart: cartSlice,
+        toast: toastSlice,
     }
 })

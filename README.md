@@ -12,3 +12,8 @@
 
 # Run project
 - npm start
+- 
+- # test card
+- no: 4242 4242 4242
+- date: 12/34
+- cvv: any 3 number
