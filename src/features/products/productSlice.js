@@ -23,7 +23,6 @@ const productSlice = createSlice({
     initialState,
     reducers: {
         filterProducts: (state, action) => {
-            // console.log(action.payload);
             state.products = state.originalList;
             if(action.payload === 'all') return;
             let d = state.products.filter((prod) => prod.category === action.payload);
@@ -36,7 +35,6 @@ const productSlice = createSlice({
             state.isLoading = true;
         },
         [getAllProducts.fulfilled] : (state, action) => {
-            // console.log(action.payload)
             state.isLoading = false;
             state.products = action.payload;
             state.originalList = action.payload;

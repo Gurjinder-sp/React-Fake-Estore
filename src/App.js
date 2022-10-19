@@ -37,7 +37,6 @@ function App() {
       const response = await fetch('http://localhost:5000/secret');
       const {client_secret: clientSecret} = await response.json();
       // Render the form using the clientSecret
-      console.log(clientSecret);
       setSecret(clientSecret);
     })();
   }

@@ -17,7 +17,6 @@ const Products = () => {
         dispatch(calculateQuantity())
     },[cartItems]);
 
-    // console.log(products)  
     useEffect(() => {
         dispatch(getAllProducts())
     },[]);
@@ -28,7 +27,7 @@ const Products = () => {
             </Row>
             <Row className=''>
             {products.map(product => {
-             return <Col lg='4'><ProductCard key={product.id} product={product}/></Col>
+             return <Col lg='4' key={product.id}><ProductCard key={product.id} product={product}/></Col>
             })}
             </Row>
         </Container>

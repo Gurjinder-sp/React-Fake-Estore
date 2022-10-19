@@ -12,7 +12,6 @@ import { showToast } from '../features/Toast/toastSlice';
 
 const ProductCard = ({product}) => {
     const dispatch = useDispatch();
-    // console.log(product)
     return (
     <Card  className="p-2 m-2 shadow-sm " style={{minHeight:'45vh'}}>
         <Card.Subtitle className='text-end'><TagIcon />{product.category}</Card.Subtitle>
@@ -29,9 +28,7 @@ const ProductCard = ({product}) => {
                     </Card.Text>
             </Col>
         </Row>
-        {/* <Row style={{'max-height':'10vh','overflow':'auto'}}>
-            {product.description}
-        </Row> */}
+      
     <Button variant='dark' className='my-2' onClick={() => {
       dispatch(addToCart({product}));
       dispatch(showToast('Added'));
@@ -46,7 +43,6 @@ const ProductCard = ({product}) => {
       </Accordion.Item>
     </Accordion> */}
 
-     
       </Card.Body>
      
     </Card>

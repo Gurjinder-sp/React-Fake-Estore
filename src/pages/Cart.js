@@ -19,7 +19,6 @@ const CartPage = () => {
 
     useEffect(() => {
         dispatch(calculateQuantity());
-        // dispatch(calculateTotal());
         dispatch(calculateTax());
     },[cartItems])
     return (  
