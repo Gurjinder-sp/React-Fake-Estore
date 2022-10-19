@@ -11,6 +11,7 @@ import CartPage from './pages/Cart';
 import Loader from './components/Loader';
 import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
+import OrderSuccess from './pages/Success';
 
 const stripePromise = loadStripe('pk_test_51HrjYlDnGuaAT4tp4jnsjOOhF5cdymLyuNGPf0aqYeHmSVNqdysYv6p7Gr78NhmpTOuKq0iQR7imRbTcVGai5Dzp00VIqizmJE');
 function App() {
@@ -49,6 +50,7 @@ function App() {
             <Route exact path="/products" element={<Products />} />
             <Route exact path='/cart' element={<CartPage />} />
             <Route exact path='/payment' element={<Elements stripe={stripePromise} options={options} ><CheckoutForm /></Elements>} />
+            <Route path='/success' element={<OrderSuccess />} />
           </>
           : 
           <>

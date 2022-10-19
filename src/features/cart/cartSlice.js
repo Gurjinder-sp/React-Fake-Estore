@@ -14,6 +14,9 @@ const cartSlice = createSlice({
     reducers: {
         clearCart: (state) => {
             state.cartItems = [];
+            state.quantity = 0;
+            state.total = 0;
+            state.tax = 0;
         },
         addToCart: (state, action) => {
             const {product} = action.payload;
@@ -25,14 +28,19 @@ const cartSlice = createSlice({
               
         },
         calculateTax: (state) => {
-            state.tax = state.total * .15; 
+            state.tax = Number((state.total * .15).toFixed(2)); 
         },
         calculateTotal: (state) => {
            
             state.total = state.tax + state.total;
+        },
+        calculateQuantity: (state) => {
+            let count = 0;
+            state.cartItems.map(item =>  count++);
+            state.quantity = count;
         }
     }
 });
 
-export const {addToCart, calculateTax, calculateTotal, clearCart} = cartSlice.actions;
+export const {addToCart, calculateTax, calculateTotal, clearCart, calculateQuantity} = cartSlice.actions;
 export default cartSlice.reducer;
